@@ -1,0 +1,13 @@
+{
+  "name": "transport-accessibility-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^9.3.4",
+    "x-ray": "^2.3.4"
+  },
+  "scripts": {
+    "dev": "nodemon index.js"
+  }
+}
