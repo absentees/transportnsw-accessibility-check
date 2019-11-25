@@ -1,6 +1,6 @@
 const lib = require("./lib.js");
 
-exports.handler = async (event, context, callback) => {
+exports.handler = async (event, context) => {
     try {
         const stationName = event.queryStringParameters.name;
         const stationId = await lib.getStationId(stationName);

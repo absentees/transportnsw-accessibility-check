@@ -4,10 +4,24 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
+const axios = require('axios');
+
 
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+  api.loadSource(async actions => {
+    const { data } = await axios.get('http://localhost:34567/.netlify/functions/getAllStations');
+
+    const collection = actions.addCollection({
+      typeName: 'Stations'
+    })
+
+    for (const item of data) {
+      collection.addNode({
+        id: item.id,
+        name: item.name,
+        wheelchairAccess: item.wheelchairAccess
+      })
+    }
   })
 
   api.createPages(({ createPage }) => {

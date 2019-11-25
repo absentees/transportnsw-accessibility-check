@@ -1,5 +1,3 @@
-var Xray = require("x-ray");
-var x = Xray();
 const lib = require("./lib.js");
 
 // Erskine 10101324
