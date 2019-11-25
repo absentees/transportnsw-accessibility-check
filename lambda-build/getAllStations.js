@@ -11,7 +11,7 @@ exports.handler = async (event, context, callback) => {
         });
     } catch (e) {
         callback(null, {
-            statusCode: 300,
+            statusCode: 500,
             body: JSON.stringify({message: `Error occured ${e.message}`})
         });
     }

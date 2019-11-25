@@ -1,23 +1,23 @@
-const lib = require("./lib.js").default;
+const lib = require("./lib.js");
 
 exports.handler = async (event, context, callback) => {
     try {
         const stationName = event.queryStringParameters.name;
-
-        
-        const stationAccess = await lib.getStationAccessibilityByName(
-            stationName
-        );
+        const stationId = await lib.getStationId(stationName);
+        const stationAccess = await lib.getStationAccessibilityById(stationId);
 
         return {
-            id: station.id,
-            name: stationName,
-            wheelchairAccess: stationAccess
+            statusCode: 200,
+            body: JSON.stringify({
+                id: stationId,
+                name: stationName,
+                wheelchairAccess: stationAccess
+            })
         };
     } catch (e) {
-        callback(null, {
-            statusCode: 300,
+        return {
+            statusCode: 500,
             body: JSON.stringify({ message: `Error occured ${e.message}` })
-        });
+        };
     }
 };

@@ -1,4 +1,4 @@
-const stations = require("../ten.js");
+const stations = require("../nsw-train-stations.js");
 var Xray = require("x-ray");
 var x = Xray();
 
@@ -26,6 +26,7 @@ async function getAllStations() {
 
 async function getStationAccessibilityById(stationId) {
     try {
+        console.log("Finding accessibility of station:" + stationId);
         var results = await x(
             `https://transportnsw.info/stop?q=${stationId}`,
             "#main-content",
@@ -46,14 +47,24 @@ async function getStationAccessibilityById(stationId) {
     }
 }
 
-async function getStationAccessibilityByName(stationName) {
+async function getStationId(stationName) {
     try {
+        for (let i = 0; i < stations.length; i++) {
+            if (stations[i].alt.toLowerCase() === stationName.toLowerCase) {
+                console.log(`Station name ${stationName} has id: ${stations[id].id}`)
+                return Promise.resolve(stations[i].id);
+            } else {
+                console.log(`Station name ${stationName} doesnt have id: ${stations[id].id}`)
+            }
+        }
+        return Promise.reject(`Station name: ${stationName} could not be found`);
     } catch (error) {
-        console.log(error.message);
+        return Promise.reject(error.message);
     }
 }
 
 module.exports = {
     getStationAccessibilityById,
-    getAllStations
+    getAllStations,
+    getStationId
 };
