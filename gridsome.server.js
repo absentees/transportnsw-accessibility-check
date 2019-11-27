@@ -13,7 +13,7 @@ module.exports = function (api) {
   let totalStations = 0;
 
   api.loadSource(async actions => {
-    const { data } = await axios.get('http://localhost:34567/.netlify/functions/getAllStations');
+    const { data } = await axios.get('/.netlify/functions/getAllStations');
 
     // const collection = actions.addCollection('Train')
 
