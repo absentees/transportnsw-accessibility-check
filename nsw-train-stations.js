@@ -368,7 +368,6 @@ var tpstations = [
 { "station" : "Warrimoo Station", "alt" : "Warrimoo",  "id" : "10101257" },
 { "station" : "Asquith Station", "alt" : "Asquith",  "id" : "10101128" },
 { "station" : "Mount Colah Station", "alt" : "Mount Colah",  "id" : "10101129" },
-{ "station" : "Circular Quay Station", "alt" : "Circular Quay",  "id" : "10101103" },
-{ "station" : "dummy-station-1a", "alt" : "dummy-station-1a", "id" : "1234567890" }
+{ "station" : "Circular Quay Station", "alt" : "Circular Quay",  "id" : "10101103" }
 ];
 module.exports = tpstations;

@@ -8,20 +8,45 @@ const axios = require('axios');
 
 
 module.exports = function (api) {
+  // Setup variables for total count
+  let totalAccessible = 0;
+  let totalStations = 0;
+
   api.loadSource(async actions => {
     const { data } = await axios.get('http://localhost:34567/.netlify/functions/getAllStations');
 
-    const collection = actions.addCollection({
-      typeName: 'Stations'
-    })
+    // const collection = actions.addCollection('Train')
 
+    // for (const item of data) {
+    //   collection.addNode({
+    //     id: item.id,
+    //     name: item.name,
+    //     wheelchairAccess: item.wheelchairAccess
+    //   })
+    // }
+
+    const collection = actions.addCollection('TrainStation')
+
+  
     for (const item of data) {
       collection.addNode({
         id: item.id,
         name: item.name,
         wheelchairAccess: item.wheelchairAccess
       })
+      
+      if (item.wheelchairAccess) totalAccessible++; 
     }
+
+    totalStations = data.length;
+
+    
+  })
+
+  api.loadSource(async store => {
+    store.addMetadata('totalAccessible', totalAccessible);
+
+    store.addMetadata('percentageAccessible', totalAccessible/totalStations*100);
   })
 
   api.createPages(({ createPage }) => {
