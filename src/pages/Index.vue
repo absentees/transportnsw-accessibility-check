@@ -11,7 +11,6 @@
 
     <p>{{ form.stationName }}</p>
 
-    <StationList/>
   </Layout>
 </template>
 
