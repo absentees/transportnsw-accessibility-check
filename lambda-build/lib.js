@@ -8,7 +8,7 @@ var accessibilityRegex = new RegExp("(is not wheelchair accessible)", "g");
 async function getAllStations() {
     try {
         // TODO: Change this to all stations 
-        const promises = tenStations.map(async station => {
+        const promises = stations.map(async station => {
             try {
                 const stationAccess = await getStationAccessibilityById(
                     station.id

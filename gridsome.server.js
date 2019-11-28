@@ -12,26 +12,26 @@ module.exports = function (api) {
   let totalAccessible = 0;
   let totalStations = 0;
 
-  // api.loadSource(async actions => {
-  //   const { data } = await axios.get('http://localhost:34567/.netlify/functions/getAllStations');
+  api.loadSource(async actions => {
+    const { data } = await axios.get('https://transportnswcheck.netlify.com/.netlify/functions/getAllStations');
 
-  //   const collection = actions.addCollection('TrainStation')
+    const collection = actions.addCollection('TrainStation')
 
   
-  //   for (const item of data) {
-  //     collection.addNode({
-  //       id: item.id,
-  //       name: item.name,
-  //       wheelchairAccess: item.wheelchairAccess
-  //     })
+    for (const item of data) {
+      collection.addNode({
+        id: item.id,
+        name: item.name,
+        wheelchairAccess: item.wheelchairAccess
+      })
       
-  //     if (item.wheelchairAccess) totalAccessible++; 
-  //   }
+      if (item.wheelchairAccess) totalAccessible++; 
+    }
 
-  //   totalStations = data.length;
+    totalStations = data.length;
 
     
-  // })
+  })
 
   api.loadSource(async store => {
     store.addMetadata('totalAccessible', totalAccessible);
