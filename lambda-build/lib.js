@@ -56,7 +56,7 @@ async function getStationAccessibilityById(stationId) {
 
 async function getStationId(stationName) {
     try {
-        for await (let station of stations) {
+        for (let station of stations) {
             if (station.alt.toLowerCase() === stationName.toLowerCase()) {
                 console.log(`Station name ${stationName} has id: ${station.id}`)
                 return Promise.resolve(station.id);
