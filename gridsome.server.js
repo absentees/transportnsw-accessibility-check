@@ -13,7 +13,7 @@ module.exports = function (api) {
   let totalStations = 0;
 
   api.loadSource(async actions => {
-    const { data } = await axios.get('https://transportnsw-accessibility-functions.netlify.com/.netlify/functions/getAllStations');
+    const { data } = await axios.get('https://transportnsw-accessibility-function.absenteesism.now.sh/getAllStations');
 
     const collection = actions.addCollection('TrainStation')
 
