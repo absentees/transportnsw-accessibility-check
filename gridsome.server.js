@@ -34,8 +34,9 @@ module.exports = function (api) {
 
   api.loadSource(async store => {
     store.addMetadata('totalAccessible', totalAccessible);
+    store.addMetadata('totalStations', totalStations);
 
-    store.addMetadata('percentageAccessible', totalAccessible/totalStations*100);
+    store.addMetadata('percentageAccessible', (totalAccessible/totalStations*100).toFixed(2));
   })
 
   api.createPages(({ createPage }) => {

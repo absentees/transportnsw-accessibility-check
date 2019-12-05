@@ -1,7 +1,8 @@
 <template>
   <Layout>
-    <h2>There are {{ $static.metadata.totalAccessible }} wheelchair accessible stations in NSW. That's {{ $static.metadata.percentageAccessible }}%.<br/>"By 2022, 100 per cent of the stations are supposed to be accessible."</h2>
-    <a href="http://https://www.abc.net.au/news/2018-08-29/the-unconscionable-state-of-australias-train-stations/10147174">abc.net.au</a>
+    <h1>There are {{ $static.metadata.totalAccessible }} wheelchair accessible stations out of a total {{ $static.metadata.totalStations }} in NSW right now. That's {{ $static.metadata.percentageAccessible }}%.</h1>
+    <p><br/>"By the end of 2017, 90 per cent of the stations are supposed to be accessible... By 2022, 100 per cent of the stations are supposed to be accessible." <a href="https://www.abc.net.au/news/2018-08-29/the-unconscionable-state-of-australias-train-stations/10147174">abc.net.au</a></p>
+    
 
     <!-- <form action="" method="get">
       <label for="stationName">Station Name:</label>
@@ -9,7 +10,7 @@
       <button type="submit">Look up</button>
     </form> -->
 
-    <p>{{ form.stationName }}</p>
+    <StationList/>
 
   </Layout>
 </template>
@@ -18,7 +19,8 @@
   query {
     metadata {
       totalAccessible,
-      percentageAccessible
+      percentageAccessible,
+      totalStations
     }
   }
 </static-query>
