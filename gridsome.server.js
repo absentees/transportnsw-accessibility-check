@@ -17,7 +17,6 @@ module.exports = function (api) {
 
     const collection = actions.addCollection('TrainStation')
 
-  
     for (const item of data) {
       collection.addNode({
         id: item.id,
